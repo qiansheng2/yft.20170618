@@ -28,7 +28,7 @@ export default {
   name: 'hello2',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      msg: 'Welcome to Your Vue.js App Hello2',
       radio: '1'
     }
   }
