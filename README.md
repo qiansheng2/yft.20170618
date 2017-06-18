@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # yft.20170618
 
 > A Vue.js project
@@ -28,3 +29,6 @@ npm test
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+=======
+# yft.20170618
+>>>>>>> 05e453ca390f35dfc13a82881411f8dac0c23ae0
