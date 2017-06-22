@@ -17,7 +17,7 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
-    <router-link :to="{name:'Hello2'}" >Hello2</router-link>
+    <router-link :to="{name:'YftTop'}" >医付通</router-link>
   </div>
 </template>
 
