@@ -4,9 +4,18 @@
   // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [{
-    "type": "node",
-    "request": "launch",
-    "name": "启动程序",
-    "program": "${workspaceRoot}/build/dev-server.js"
-  }]
+      "name": "谷歌浏览器", //运行html文件，用谷歌浏览器打开
+      "type": "chrome",
+      "request": "launch",
+      "url": "${file}",
+      "sourceMaps": true,
+      "webRoot": "${workspaceRoot}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "启动程序",
+      "program": "${workspaceRoot}/build/dev-server.js"
+    }
+  ]
 }

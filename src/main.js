@@ -5,9 +5,10 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import App from './App'
 import router from './router'
+// bimport './assets/js/amazeui'
+import './assets/css/amazeui.css'
 
 Vue.config.productionTip = false
-
 Vue.use(ElementUI)
 
 /* eslint-disable no-new */
