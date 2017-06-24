@@ -1,7 +1,4 @@
 <template>
-  <div id="app">
-    <!--<img src="./assets/logo.png">-->
-
     <head>
 
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,8 +14,11 @@
       <meta name="apple-mobile-web-app-title" content="Amaze UI">
       <link rel="stylesheet" href="top/amazeui.min.css">
       <link rel="stylesheet" href="top/app.css">
-
     </head>
+
+  <div id="app">
+    <!--<img src="./assets/logo.png">-->
+
     <router-view></router-view>
   </div>
 </template>
