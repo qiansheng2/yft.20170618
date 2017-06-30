@@ -59,11 +59,37 @@ export default {
   methods: {
     handleClick() {
       console.log(1)
+    },
+    getData() {
+      var MongoClient = require('mongodb').MongoClient;
+      if (!process.env.prod.env.DB_CONN_STR) {
+        process.env.prod.env.DB_CONN_STR = JSON.parse(process.env.prod.env.DB_CONN_STR);
+      }
+      //连接数据库
+      MongoClient.connect(process.env.prod.env.DB_CONN_STR, function(err, db) {
+        console.log('连接字符串：' + DB_CONN_STR);
+        if(err){
+          console.log('Error:' + err);
+        }else{
+          console.log('连接成功！');
+          findData(db, function(result) {
+            console.log(result);
+            db.close();
+          })
+        };
+      });
+    },
+    findData(db, callback) {
+      /* 连接到销售情况 */
+      var collection = db.collection('销售情况');
+      // 搜索数据
+      return collection.find({});
     }
   },
 
   data() {
     return {
+      tableData2: getData(),
       tableData: [{
         issueDate: '2016-05-03',
         code: '2016-05-03',
@@ -79,6 +105,7 @@ export default {
     }
   }
 }
+
 </script>
 
 
