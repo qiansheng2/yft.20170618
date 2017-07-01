@@ -25,7 +25,11 @@
     "net": "^1.0.2",
     "tls": "0.0.1",
     "vue": "^2.3.3",
-    "vue-router": "^2.3.1"
+    "vue-router": "^2.3.1",
+    "babel-eslint": "^7.1.1",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
@@ -90,7 +94,8 @@
     "webpack": "^2.6.1",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.18.0",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "serve-favicon": "^2.3.0"
   },
   "engines": {
     "node": ">= 4.0.0",
