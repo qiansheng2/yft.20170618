@@ -1,6 +1,9 @@
 'use strict';
 
 require('./check-versions')()
+const db = require('../server/db')
+const api = require('../server/api')
+
 
 var config = require('../config')
 if (!process.env.NODE_ENV) {
@@ -65,6 +68,9 @@ app.use(hotMiddleware)
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
+
+app.use(api);
+
 
 var uri = 'http://localhost:' + port
 

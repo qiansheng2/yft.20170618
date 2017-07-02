@@ -1,57 +1,41 @@
 const mongoose = require('mongoose')
-const init = require('./init.json')
 const Schema = mongoose.Schema
 
-const userSchema = new Schema({
-  name: String,
-  pwd: String
-})
-
-const articleSchema = new Schema({
-  title: String,
-  date: Date,
-  content: String
-})
-
-const linkSchema = new Schema({
-  name: String,
-  href: String
+const costomerSchema = new Schema({
+  签约日: Date,
+  社保编码: String,
+  区域: String,
+  名称: String,
+  连锁规模: Number,
+  负责人: String,
+  负责人电话: String,
+  联系人: String,
+  联系人电话: String,
+  销售经理: String
 })
 
 const Models = {
-  User: mongoose.model('User', userSchema),
-  Article: mongoose.model('Article', articleSchema),
-  Link: mongoose.model('Link', linkSchema),
+  Customer: mongoose.model('Customer', costomerSchema),
   initialized: false
 }
 
-const initialize = function () {
-  Models.User.find(null, function (err, doc) {
-    if (err) {
-      console.log(err)
-    } else if (!doc.length) {
-      console.log('Database opens for the first time...')
-      Promise.all(init.map(item => new Models[item.type](item).save()))
-        .then(() => console.log('Initialize successfully.'))
-        .catch(() => console.log('Something went wrong during initializing.'))
-    } else {
-      Models.initialized = true
-    }
-  })
-}
+mongoose.connect('mongodb://127.0.0.1/yft')
+mongoose.set('debug', true)
 
-mongoose.connect('mongodb://127.0.0.1/CMS2')
-// mongoose.set('debug', true)
+mongoose.connection.on('connected', () => console.log('mongoose.connect ok!'))
+mongoose.connection.on('error', () => console.log('mongoose.connect error!'))
+mongoose.connection.on('disconnected', () => console.log('mongoose.connect disconnected!'))
 
 const db = mongoose.connection
 
-db.on('error', function () {
-  console.log('Database connection error.')
+db.on('error', function (err) {
+  if(err){
+    console.log('Database connection error.' + err)
+  }
 })
 
 db.once('open', function () {
   console.log('The database has connected.')
-  initialize()
 })
 
 module.exports = Models
