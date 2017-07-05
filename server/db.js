@@ -15,7 +15,7 @@ const costomerSchema = new Schema({
 })
 
 const Models = {
-  Customer: mongoose.model('Customer', costomerSchema),
+  Customer: mongoose.model('customer', costomerSchema, 'customer'),
   initialized: false
 }
 
