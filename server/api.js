@@ -13,7 +13,6 @@ router.get('/api/initYftTop', (req, res) => {
       res.send(JSON.stringify(doc))
     }
   })
-
 })
 
 module.exports = router

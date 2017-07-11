@@ -59,10 +59,10 @@
     </div>
 
     <!-- 数据修改Form -->
-    <el-dialog title='修改' size='small' close-on-click-modal='false' close-on-press-escape='false' :visible.sync='editFormVisible'>
+    <el-dialog title='修改' size='small' :close-on-click-modal='false' :visible.sync='editFormVisible'>
       <el-form label-position='right' :model='editForm' :inline='true'>
-        <el-form-item label='签约日' label-width='100px' prop='签约日' required>
-          <el-date-picker v-model='签约日' type='date' placeholder='选择日期' :picker-options='pickerOptions0'>
+        <el-form-item label='签约日1' label-width='100px' prop='abcde' required>
+          <el-date-picker  type='date' placeholder='选择日期' :picker-options='pickerOptions0'>
           </el-date-picker>
         </el-form-item>
         <el-form-item label='销售经理' label-width='100px' required>
@@ -72,7 +72,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label='编码' label-width='100px' required>
-          <el-input minlength=6 maxlength=6 placeholder='6位社保编码' auto-complete='off'></el-input>
+          <el-input :minlength='6' :maxlength='6' placeholder='6位社保编码' auto-complete='off'></el-input>
         </el-form-item>
         <el-form-item label='区域' label-width='100px' required>
           <el-select v-model="districtName" placeholder="区域">
@@ -115,9 +115,12 @@ export default {
   mounted: function () {
     console.log('mounted!!')
   },
-  created() {
-    console.log('created23!!')
+  created: function() {
+    console.log('created!!')
+    console.log('mapstate:' + mapState)
     this.fetchData()
+    console.log('mapstate2:' + mapState(['customers']))
+    // console.log('customers:' + customers)
   },
   methods: {
     fetchData() {
@@ -135,7 +138,13 @@ export default {
     }
   },
   computed:
-  mapState(['customers']),
+    mapState(['customers']),
+  fetchData2(){
+    this.$store.dispatch('initYftTop2')
+  },
+  fetchData3(){
+    this.$store.dispatch('initYftTop3')
+  },
   data: function () {
     return {
       editFormVisible: false,
@@ -179,7 +188,7 @@ export default {
       ],
       districtName: '',
       rules: {
-        签约日: [
+        abcde: [
           { required: true, message: '请输入签约日', trigger: 'blur' }
         ]
       },

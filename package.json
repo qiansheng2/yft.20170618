@@ -14,6 +14,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "async-validator": "^1.7.1",
     "babel-eslint": "^7.1.1",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
