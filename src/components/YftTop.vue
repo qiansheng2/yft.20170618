@@ -52,21 +52,22 @@
         </el-table-column>
         <el-table-column fixed='right' label='操作' width='100'>
           <template scope='scope'>
-            <el-button @click='editFormVisible = true' type='text' size='small'>修改</el-button>
+            <el-button @click='editForm()' type='text' size='small'>修改</el-button>
           </template>
         </el-table-column>
       </el-table>
     </div>
 
     <!-- 数据修改Form -->
-    <el-dialog title='修改' size='small' :close-on-click-modal='false' :visible.sync='editFormVisible'>
+    <el-dialog title='修改' size='small' :close-on-click-modal='false' :visible.sync='editFormVisible'
+      :show-close='false' :modal='true' >
       <el-form label-position='right' :model='editForm' :inline='true'>
-        <el-form-item label='签约日1' label-width='100px' prop='abcde' required>
+        <el-form-item label='签约日1' label-width='100px' prop='rules.abcde' required>
           <el-date-picker  type='date' placeholder='选择日期' :picker-options='pickerOptions0'>
           </el-date-picker>
         </el-form-item>
         <el-form-item label='销售经理' label-width='100px' required>
-          <el-select v-model="salesManager" placeholder="销售经理">
+          <el-select v-model='editForm.salesManager' placeholder="销售经理">
             <el-option v-for='salesManager in salesManagers' :key='salesManager.value' :label='salesManager.name' :value='salesManager.value'>
             </el-option>
           </el-select>
@@ -112,39 +113,6 @@
 import { mapState } from 'vuex'
 
 export default {
-  mounted: function () {
-    console.log('mounted!!')
-  },
-  created: function() {
-    console.log('created!!')
-    console.log('mapstate:' + mapState)
-    this.fetchData()
-    console.log('mapstate2:' + mapState(['customers']))
-    // console.log('customers:' + customers)
-  },
-  methods: {
-    fetchData() {
-      this.$store.dispatch('initYftTop')
-    },
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit!');
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
-    }
-  },
-  computed:
-    mapState(['customers']),
-  fetchData2(){
-    this.$store.dispatch('initYftTop2')
-  },
-  fetchData3(){
-    this.$store.dispatch('initYftTop3')
-  },
   data: function () {
     return {
       editFormVisible: false,
@@ -160,7 +128,7 @@ export default {
         { value: '2', name: '包永全' },
         { value: '3', name: '洪玥' }
       ],
-      salesManager: '',
+      salesManager: 'zs',
       districts:
       [
         { name: '市本级' },
@@ -193,10 +161,40 @@ export default {
         ]
       },
       editForm: {
-
+        salesManager: 'qs'
       }
     }
-  }
+  },
+  mounted: function () {
+    console.log('mounted!!')
+  },
+  created: function() {
+    console.log('created!!')
+    // console.log('mapstate:' + mapState)
+    this.fetchData()
+    console.log('mapstate2:' + mapState(['customers']))
+    // console.log('customers:' + customers)
+  },
+  methods: {
+    fetchData() {
+      this.$store.dispatch('initYftTop')
+    },
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!');
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
+    },
+    editForm(){
+      this.editFormVisible = true
+    }
+  },
+  computed:
+    mapState(['customers'])
 }
 </script>
 
